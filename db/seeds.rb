@@ -9,6 +9,15 @@
 
 require 'csv'
 
+def random_fare
+  until false
+    fare = rand*100
+    if fare >= 5 && fare <= 50
+      return fare.round(2)
+    end
+  end
+end
+
 #PASSENGER
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'passengers.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
@@ -20,13 +29,13 @@ csv.each do |row|
 end
 
 #DRIVER
-  csv_text = File.read(Rails.root.join('lib', 'seeds', 'drivers.csv'))
-  csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-  csv.each do |row|
-    d = Driver.new
-    d.name = row['name']
-    d.vin = row['vin']
-    d.save
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'drivers.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  d = Driver.new
+  d.name = row['name']
+  d.vin = row['vin']
+  d.save
 end
 
 #TRIPS
@@ -38,5 +47,6 @@ csv.each do |row|
   t.passenger_id = row['rider_id'].to_i
   t.date = row['date']
   t.rating = row['rating'].to_i
+  t.fare = random_fare
   t.save
 end
