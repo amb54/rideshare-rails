@@ -1,0 +1,46 @@
+<section class = "index_section">
+
+
+  <h1 id = "index_header_text">List of all Trips</h1>
+
+
+  <div class="tbl-header">
+    <table cellpadding="12px" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Date</th>
+          <th>Passenger</th>
+          <th>Driver</th>
+          <th>Rating</th>
+          <th>Fare</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="12px" cellspacing="0" border="0">
+      <% @trips.each do |trip| %>
+      <tr>
+        <td><%= trip[:id] %></td>
+        <td><%= trip[:date] %></td>
+        <td><%= trip.passenger.name %></td>
+        <td><%= trip.driver.name %></td>
+        <td><%= trip[:rating] %></td>
+        <td><%= trip[:fare] %></td>
+        <td class="table_link">
+          <%= link_to "Show", trip_path(trip), class: "button_link" %>
+          <%#= link_to "Edit", edit_passeger_trip_path(trip), class: "button_link" %>
+          <%#= link_to "Delete", passeger_trip_path(trip),
+          data: {method: :delete, confirm: "Are you sure you want to delete #{trip.name} from the list?"}, class: "button_link" %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+
+
+
+  <!-- END of index_section -->
+</section>

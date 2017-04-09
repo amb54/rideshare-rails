@@ -1,0 +1,39 @@
+<section class = "index_section">
+
+
+  <h1 id = "index_header_text">Passengers</h1>
+  <div class="table_link" >
+    <%= link_to "Add Passenger", new_passenger_path, class: "button_link"%>
+  </div>
+
+  <div class="tbl-header">
+    <table cellpadding="12px" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Phone Number</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <% @passengers.each do |passenger| %>
+      <tr>
+        <td><%= passenger[:id] %></td>
+        <td><%= passenger[:name] %></td>
+        <td><%= passenger[:phone_num]%></td>
+        <td class="table_link">
+          <%= link_to "Show", passenger_path(passenger), class: "button_link" %>
+          <%= link_to "Edit", edit_passenger_path(passenger), class: "button_link" %>
+          <%= link_to "Delete", passenger_path(passenger),
+          data: {method: :delete, confirm: "Are you sure you want to delete #{passenger.name} from the list?"}, class: "button_link" %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+  <!-- END of index_section -->
+</section>

@@ -1,0 +1,31 @@
+<% if @passenger.errors.messages.length > 0 %>
+  <section class="errors">
+    <h2>Something went wrong!</h2>
+    <ul>
+      <% @passenger.errors.messages.each do |field, problem_list| %>
+        <% problem_list.each do |problem| %>
+          <li>
+            <strong><%= field %>:</strong>
+            <%= problem %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
+<section id = "_form_section">
+  <%= form_for @passenger do |f| %>
+    <div>
+      <%= f.label :name, class: "label" %>
+      <%= f.text_field :name, class: "field"%>
+    </div>
+    <div>
+      <%= f.label :phone_num, class: "label"%>
+      <%= f.text_field :phone_num, class: "field"%>
+    </div>
+    <div id = "_form_section_submit">
+      <%= f.submit value: "SAVE"%>
+    </div>
+  <% end %>
+</section>

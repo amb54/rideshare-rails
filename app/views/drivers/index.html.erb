@@ -1,0 +1,44 @@
+<section class = "index_section">
+
+
+<h1 id = "index_header_text">Drivers</h1>
+<div class="table_link" >
+  <%= link_to "Add Driver", new_driver_path, class: "button_link"%>
+</div>
+
+<div class="tbl-header">
+  <table cellpadding="12px" cellspacing="0" border="0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <!-- <th>VIN</th> -->
+        <th>Average rating</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+  </table>
+</div>
+<div class="tbl-content">
+  <table cellpadding="0" cellspacing="0" border="0">
+    <% @drivers.each do |driver| %>
+    <tr>
+      <td><%= driver[:id] %></td>
+      <td><%= driver[:name] %></td>
+      <!-- <td><%#= driver[:vin] %></td> -->
+      <td><%= driver.average_rating %></td>
+      <td class="table_link">
+        <%= link_to "Show", driver_path(driver), class: "button_link" %>
+        <%= link_to "Edit", edit_driver_path(driver), class: "button_link" %>
+        <%= link_to "Delete", driver_path(driver),
+        data: {method: :delete, confirm: "Are you sure you want to delete #{driver.name} from the list?"}, class: "button_link" %>
+      </td>
+    </tr>
+    <% end %>
+    </table>
+</div>
+
+
+
+<!-- END of index_section -->
+</section>

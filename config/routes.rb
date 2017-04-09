@@ -19,8 +19,8 @@ Rails.application.routes.draw do
 
 
   #RIDERS
-  resources :riders do
-    resources :trips do
+  resources :passengers do
+    resources :trips, except: [:index, :show] do
       member do
         get  'complete_trip'
       end
@@ -28,6 +28,6 @@ Rails.application.routes.draw do
     # resources :trips, only: [:new, :create] (Dan's comments)
   end
     # resources :trips, except: [:new, :create] (Dan's comments)
-
+  resources :trips, only:[:index, :show]
 
 end # END of Rails.application.routes.draw
