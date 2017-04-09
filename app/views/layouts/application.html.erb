@@ -9,6 +9,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+
+      <div id ="home_image">
+        <%= link_to "Home", welcome_path %>
+      </div>
+
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+
   </body>
 </html>
